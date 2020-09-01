@@ -36,6 +36,10 @@ public class ProductCategoryDaoMem implements ProductCategoryDao {
     }
 
     @Override
+    public ProductCategory find(String name) { return data.stream().filter(t -> t.getName() == name).findFirst().orElse(null);
+    }
+
+    @Override
     public void remove(int id) {
         data.remove(find(id));
     }
