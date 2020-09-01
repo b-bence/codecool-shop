@@ -26,17 +26,23 @@
     <!-- End of Bootstrap components -->
 
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
+    <script src='/static/js/dataHandler.js' defer></script>
+    <script src='/static/js/main.js' defer></script>
 </head>
 
 <body>
 
 <div class="jumbotron text-center">
     <h1>Codecool Shop</h1>
+    <ul>
+        <li class="category" th:each="cat,iterStat : ${categories}" th:text="${cat.getName()}" th:attr="data-category=${cat.getName()}">Category name</li>
+    </ul>
 </div>
+
 
 <div class="container">
     <div class="card">
-        <strong th:text="${category.name}">Category Title</strong>
+        <strong id="filtered-category" th:text="${category.name}">Category Title</strong>
     </div>
 
     <div id="products" class="row">
