@@ -34,6 +34,7 @@ public class Initializer implements ServletContextListener {
         Supplier lenovo = new Supplier("Lenovo", "Computers");
         supplierDataStore.add(lenovo);
         Supplier wish = new Supplier("Wish", "Weird stuff");
+        supplierDataStore.add(wish);
     }
 
     private void productCategoryInitializer(ProductCategoryDao productCategoryDataStore) {
@@ -41,6 +42,7 @@ public class Initializer implements ServletContextListener {
         ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
         productCategoryDataStore.add(tablet);
         ProductCategory nicolasCage = new ProductCategory("Nicolas Cage", "Actor", "Nicolas Cage. On your pants. On your mug. On your pillow. Everywhere.");
+        productCategoryDataStore.add(nicolasCage);
     }
 
     private void productInitializer(ProductDao productDataStore, ProductCategoryDao productCategoryDataStore, SupplierDao supplierDataStore) {
