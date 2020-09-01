@@ -4,7 +4,7 @@ function apiGet(url, callback) {
         .then(jsonData => callback(jsonData));
 }
 
-function getProductsForCategory(categoryName) {
+function getProductsForCategory(categoryName, callback) {
     url = "/api/category?name=" + categoryName;
     this.apiGet(url, (response) => callback(response));
 }
