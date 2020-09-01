@@ -60,3 +60,22 @@
 {
     margin: 0 0 11px;
 }
+
+img {
+    height: 250px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 1em;
+}
+
+li {
+    display: inline;
+    padding: 14px 16px;
+    margin: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+    background-color: darkslategrey;
+}
