@@ -5,7 +5,7 @@
     <meta name="author" content="Codecool" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <title>Codecool Shop</title>
+    <title>Bizarre Bazaar</title>
 
     <!-- Bootstrap components -->
     <!-- Latest compiled and minified Jquery -->
@@ -33,7 +33,8 @@
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Codecool Shop</h1>
+    <h1>Bizarre Bazaar</h1>
+    <br>
     <ul>
         <li class="category" th:each="cat,iterStat : ${categories}" th:text="${cat.getName()}" th:attr="data-category=${cat.getName()}">Category name</li>
     </ul>
