@@ -43,6 +43,8 @@ public class Initializer implements ServletContextListener {
         productCategoryDataStore.add(tablet);
         ProductCategory nicolasCage = new ProductCategory("Nicolas Cage", "Actor", "Nicolas Cage. On your pants. On your mug. On your pillow. Everywhere.");
         productCategoryDataStore.add(nicolasCage);
+        ProductCategory children = new ProductCategory("Children", "Toys", "Toys for (mostly) children.");
+        productCategoryDataStore.add(children);
     }
 
     private void productInitializer(ProductDao productDataStore, ProductCategoryDao productCategoryDataStore, SupplierDao supplierDataStore) {
@@ -52,5 +54,6 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("Amazon Fire HD 8", 89, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", productCategoryDataStore.find("Tablet"), supplierDataStore.find("Amazon")));
         productDataStore.add(new Product("Nicolas Cage Mug", 8, "USD", "Nicolas Cage staring at you nicely from your mug. Everyday.", productCategoryDataStore.find("Nicolas Cage"), supplierDataStore.find("Wish")));
         productDataStore.add(new Product("Nicolas Cage pants", 25, "USD", "Nicolas Cage staring at OTTERS nicely from your pants. Everyday.", productCategoryDataStore.find("Nicolas Cage"), supplierDataStore.find("Wish")));
+        productDataStore.add(new Product("Potty trainer", 35, "USD", "You can easily train your child to do number one and number two tasks in this cute potty trainer.", productCategoryDataStore.find("Children"), supplierDataStore.find("Wish")));
     }
 }
