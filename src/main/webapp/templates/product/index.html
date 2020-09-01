@@ -35,7 +35,7 @@
 
 <body>
 <div>
-    <p id="cart"><i id="cart-icon"class="fas fa-shopping-cart"></i>0</p>
+    <p id="cart" data-has-order="false" data-order-id=""><i id="cart-icon"class="fas fa-shopping-cart"></i>0</p>
 </div>
 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -66,7 +66,7 @@
                     <div class="card-text">
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
-                    <div class="card-text">
+                    <div class="card-text ">
                         <a class="btn btn-success" href="#">Add to cart</a>
                     </div>
                 </div>
