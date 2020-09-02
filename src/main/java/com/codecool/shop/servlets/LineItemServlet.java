@@ -1,10 +1,13 @@
 package com.codecool.shop.servlets;
 
 
-import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
+import com.codecool.shop.dao.UserDao;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
-import com.codecool.shop.model.*;
-import com.codecool.shop.util.Util;
+import com.codecool.shop.dao.implementation.UserDaoMem;
+import com.codecool.shop.model.LineItem;
+import com.codecool.shop.model.Order;
+import com.codecool.shop.model.Product;
+import com.codecool.shop.model.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -15,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import java.util.Optional;
 
 @WebServlet(name = "LineItemServlet", urlPatterns = "/api/add-new-line-item", loadOnStartup = 2)
@@ -26,27 +28,35 @@ public class LineItemServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //response.setContentType("application/json");
-        //response.setCharacterEncoding("UTF-8");
+        UserDao userDataStore = UserDaoMem.getInstance();
         Order order;
         int productId = Integer.parseInt(request.getParameter("id"));
 
-        if(user.isEmpty()){
+        if (user.isEmpty()) {
             user = Optional.of(new User());
             user.get().createOrder();
+            userDataStore.add(user.get());
         }
 
-        if(user.get().isThereAnActiveOrder()){
+        if (user.get().isThereAnActiveOrder()) {
             order = user.get().getLastOrder();
-        }else {
+        } else {
             order = new Order(); // If a guest wants to make another order.
         }
+        order.setUserId(user.get().getId());
 
         Product product = ProductDaoMem.getInstance().find(productId);
-        LineItem lineItem = new LineItem(productId, product.getName(), product.getDefaultPrice(), product.getDefaultCurrency());
-        order.addlineItem(lineItem);
 
-        String result = "ok";
+        String productName = product.getName();
+
+        if (order.checkIfLineItemExists(productName)) {
+            order.increaseLineItemNumber(productName);
+        } else {
+            LineItem lineItem = new LineItem(productId, product.getName(), product.getDefaultPrice(), product.getDefaultCurrency());
+            order.addlineItem(lineItem);
+        }
+
+        String result = order.getUserId().toString();
 
         Gson gson = new GsonBuilder()
                 .serializeNulls()
