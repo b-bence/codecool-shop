@@ -2,12 +2,8 @@ package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.dao.OrderDao;
-import com.codecool.shop.dao.ProductCategoryDao;
-import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.UserDao;
 import com.codecool.shop.dao.implementation.OrderDaoMem;
-import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
-import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.UserDaoMem;
 import com.codecool.shop.model.LineItem;
 import com.codecool.shop.model.Order;
@@ -21,7 +17,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 @WebServlet(urlPatterns = {"/cart"})
 public class CartController extends HttpServlet {
@@ -41,7 +39,7 @@ public class CartController extends HttpServlet {
         OrderDao orderDataStore = OrderDaoMem.getInstance();
         String userIdStr = req.getParameter("userid");
         Map<LineItem, Integer> lineItemList = new HashMap<>();
-        if (userIdStr != "") {
+        if (userIdStr != null) {
             UUID userId = UUID.fromString(userIdStr);
             User currentUser = userDataStore.find(userId);
             Order currentOrder = currentUser.getLastOrder();
