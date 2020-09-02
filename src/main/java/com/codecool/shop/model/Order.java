@@ -6,37 +6,52 @@ import java.util.UUID;
 
 public class Order {
 
+
+    private UUID userId;
     private UUID id;
-    private Map<Product, Integer> products;
+    private Map<LineItem, Integer> lineItems;
+    private boolean isActive = true;
 
     public Order() {
         this.id = new UUID(10, 1);
-        this.products = new HashMap<>();
+        this.lineItems = new HashMap<>();
     }
 
-    public void addProduct(Product product) {
-        if (products.containsKey(product)) {
-            products.put(product, products.get(product) + 1);
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
+
+    public void addlineItem(LineItem lineItem) {
+        if (lineItems.containsKey(lineItem)) {
+            lineItems.put(lineItem, lineItems.get(lineItem) + 1);
         }
-        products.put(product, 1);
+        lineItems.put(lineItem, 1);
     }
 
-    public void deleteOneProduct(Product product) {
-        if (products.containsKey(product)) {
-            products.put(product, products.get(product) - 1);
-            if (products.get(product) <= 0) {
-                products.remove(product);
+    public void deleteOnelineItem(LineItem lineItem) {
+        if (lineItems.containsKey(lineItem)) {
+            lineItems.put(lineItem, lineItems.get(lineItem) - 1);
+            if (lineItems.get(lineItem) <= 0) {
+                lineItems.remove(lineItem);
             }
         }
     }
 
-    public void deleteOneTypeOfProduct(Product product) {
-        if (products.containsKey(product)) {
-            products.remove(product);
+    public void deleteOneTypeOflineItem(LineItem lineItem) {
+        if (lineItems.containsKey(lineItem)) {
+            lineItems.remove(lineItem);
         }
     }
 
     public UUID getId() {
         return id;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public boolean isActive() {
+        return isActive;
     }
 }
