@@ -26,8 +26,6 @@ public class LineItemServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //response.setContentType("application/json");
-        //response.setCharacterEncoding("UTF-8");
         Order order;
         int productId = Integer.parseInt(request.getParameter("id"));
 
@@ -46,7 +44,7 @@ public class LineItemServlet extends HttpServlet {
         LineItem lineItem = new LineItem(productId, product.getName(), product.getDefaultPrice(), product.getDefaultCurrency());
         order.addlineItem(lineItem);
 
-        String result = "ok";
+        String result = order.getId().toString();
 
         Gson gson = new GsonBuilder()
                 .serializeNulls()

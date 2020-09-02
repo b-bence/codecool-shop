@@ -13,7 +13,7 @@ public class Order {
     private boolean isActive = true;
 
     public Order() {
-        this.id = new UUID(10, 1);
+        this.id = UUID.randomUUID();;
         this.lineItems = new HashMap<>();
     }
 
@@ -53,5 +53,9 @@ public class Order {
 
     public boolean isActive() {
         return isActive;
+    }
+
+    public Map<LineItem, Integer> getLineItems() {
+        return lineItems;
     }
 }

@@ -19,7 +19,7 @@ public class User {
 
 
     public User() {
-        this.id = new UUID(10,1);
+        this.id = UUID.randomUUID();
         this.name = "Guest" + this.id;
 
     }

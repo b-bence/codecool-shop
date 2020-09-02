@@ -56,7 +56,13 @@ function addProductEventListener() {
 
 function addProductToCart(productId) {
     addLineItemToOrder(productId, (response) =>{
-        console.log(productId);
+        let cartP = document.querySelector("#cart");
+        if (cartP.dataset.hasOrder == "false") {
+            cartP.dataset.orderId = response;
+            cartP.dataset.hasOrder = "true";
+        }
+        let cartLink = document.querySelector("#cart-link");
+        cartLink.setAttribute("href", `/cart?orderid=${response}`);
         let number = parseInt(document.querySelector("#number-of-items").innerHTML) + 1;
         document.querySelector("#number-of-items").innerHTML = number.toString();
     })
