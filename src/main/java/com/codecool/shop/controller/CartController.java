@@ -39,18 +39,21 @@ public class CartController extends HttpServlet {
         String userIdStr = req.getParameter("userid");
         Map<LineItem, Integer> lineItemList = new HashMap<>();
         String totalPrice = "";
+        boolean isItemInCart = false;
         if (userIdStr != null) {
             UUID userId = UUID.fromString(userIdStr);
             User currentUser = userDataStore.find(userId);
             Order currentOrder = currentUser.getLastOrder();
             lineItemList = currentOrder.getLineItems();
             totalPrice = currentOrder.getTotalPriceWithCurrencyAsString();
+            isItemInCart = true;
         }
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("lineitems", lineItemList);
         context.setVariable("totalPrice", totalPrice);
+        context.setVariable("isItemInCart", isItemInCart);
 
         engine.process("product/cart.html", context, resp.getWriter());
     }

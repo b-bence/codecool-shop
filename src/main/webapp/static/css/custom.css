@@ -104,6 +104,7 @@ li {
 #payment-button{
     cursor: pointer;
     float: right;
+    margin: 2em;
 }
 
 .fa-minus-square, .fa-plus-square, .fa-trash-o{
@@ -119,4 +120,10 @@ td.total {
     text-align: center;
     font-weight: bold;
     padding: 2.5em;
+}
+
+#no-cart-content {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
 }

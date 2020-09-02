@@ -40,35 +40,42 @@
 </div>
 
 <div class="container">
-    <table style="width:100%">
-        <tr>
-            <th class="center">Product image</th>
-            <th>Product name</th>
-            <th class="center">Quantity</th>
-            <th class="center">Price</th>
-            <th class="center">Change quantity</th>
-            <th class="center">Delete all</th>
-        </tr>
-        <tr class="lineItem" th:each="lineitem,iterStat : ${lineitems}">
-            <td class="center"><img class="order-image" th:attr="src='/static/img/product_' + ${lineitem.getKey().getId()} + '.jpg'" alt=""></td>
-            <td th:text="${lineitem.getKey().getName()}"></td>
-            <td class="center" th:text="${lineitem.getValue()}"></td>
-            <td class="center"><span th:text="${#numbers.formatDecimal(lineitem.getKey().getDefaultPrice()*lineitem.getValue(), 0, 'COMMA', 2, 'POINT')}"></span> <span th:text="${lineitem.getKey().getDefaultCurrency()}"></span></td>
-            <td class="center"><i class="fas fa-minus-square" style="font-size:24px"></i>  <i class="fas fa-plus-square" style="font-size:24px"></i></td>
-            <td class="center"><i class="fa fa-trash-o" style="font-size:24px"></i></td>
-        </tr>
-        <tr>
-            <td class="total">Total price</td>
-            <td></td>
-            <td></td>
-            <td class="total" th:text="${totalPrice}"></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
-    <button id="payment-button">Proceed to payment</button>
-    <br>
+    <div class="cart-content-exists" th:if="${isItemInCart==true}">
+        <table style="width:100%">
+            <tr>
+                <th class="center">Product image</th>
+                <th>Product name</th>
+                <th class="center">Quantity</th>
+                <th class="center">Price</th>
+                <th class="center">Change quantity</th>
+                <th class="center">Delete all</th>
+            </tr>
+            <tr class="lineItem" th:each="lineitem,iterStat : ${lineitems}">
+                <td class="center"><img class="order-image" th:attr="src='/static/img/product_' + ${lineitem.getKey().getId()} + '.jpg'" alt=""></td>
+                <td th:text="${lineitem.getKey().getName()}"></td>
+                <td class="center" th:text="${lineitem.getValue()}"></td>
+                <td class="center"><span th:text="${#numbers.formatDecimal(lineitem.getKey().getDefaultPrice()*lineitem.getValue(), 0, 'COMMA', 2, 'POINT')}"></span> <span th:text="${lineitem.getKey().getDefaultCurrency()}"></span></td>
+                <td class="center"><i class="fas fa-minus-square" style="font-size:24px"></i>  <i class="fas fa-plus-square" style="font-size:24px"></i></td>
+                <td class="center"><i class="fa fa-trash-o" style="font-size:24px"></i></td>
+            </tr>
+            <tr>
+                <td class="total">Total price</td>
+                <td></td>
+                <td></td>
+                <td class="total" th:text="${totalPrice}"></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <div>
+        <button id="payment-button">Proceed to payment</button>
+        </div>
+    </div>
+    <div id="no-cart-content" th:if="${isItemInCart==false}">
+        <i id="cart-icon"class="fas fa-shopping-cart"></i>
+        <p>There are no products in your cart yet.</p>
+    </div>
 </div>
-
+<!--<div th:replace="footer.html :: copy"></div>-->
 </body>
 </html>
