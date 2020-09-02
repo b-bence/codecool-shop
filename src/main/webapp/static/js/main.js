@@ -2,6 +2,7 @@ init();
 
 function init() {
     initializeHeaders()
+    addProductEventListener()
 }
 
 function initializeHeaders() {
@@ -34,12 +35,32 @@ function generateNewCardContent(productList) {
                         <p class="lead">${prod.defaultPrice} ${prod.defaultCurrency}</p>
                     </div>
                     <div class="card-text">
-                        <a class="btn btn-success" href="#">Add to cart</a>
+                        <a class="btn btn-success" data-product-id="${prod.id}">Add to cart</a>
                     </div>
                 </div>
             </div>
         </div>`
     })
     productsDiv.innerHTML = content;
-
+    addProductEventListener()
 }
+
+function addProductEventListener() {
+    let addButtons = document.querySelectorAll(".btn-success");
+    addButtons.forEach(btn => {
+        btn.addEventListener("click", e => {
+            addProductToCart(btn.dataset.productId);
+        })
+    })
+}
+
+function addProductToCart(productId) {
+    addLineItemToOrder(productId, (response) =>{
+        console.log(productId);
+        let number = parseInt(document.querySelector("#number-of-items").innerHTML) + 1;
+        document.querySelector("#number-of-items").innerHTML = number.toString();
+    })
+}
+
+
+

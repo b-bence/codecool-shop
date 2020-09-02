@@ -12,6 +12,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+    <script src="https://kit.fontawesome.com/4818a6b19c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!--Latest compiled and minified Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
             integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -31,6 +34,12 @@
 </head>
 
 <body>
+<div>
+    <p id="cart" data-has-order="false" data-order-id=""><i id="cart-icon"class="fas fa-shopping-cart"></i><span id="number-of-items">0</span></p>
+</div>
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
 
 <div class="jumbotron text-center">
     <h1>Codecool Shop</h1>
@@ -57,8 +66,8 @@
                     <div class="card-text">
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
-                    <div class="card-text">
-                        <a class="btn btn-success" href="#">Add to cart</a>
+                    <div class="card-text ">
+                        <a class="btn btn-success" th:attr="data-product-id=${prod.id}">Add to cart</a>
                     </div>
                 </div>
             </div>
