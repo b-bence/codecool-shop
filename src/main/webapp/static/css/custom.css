@@ -80,6 +80,9 @@ li {
     background-color: darkslategrey;
 }
 
+#cart {
+    cursor: pointer;
+}
 
 .jumbotron {
     padding: 1rem 2rem;
