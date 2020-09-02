@@ -32,7 +32,7 @@ public class UserDaoMem implements UserDao {
 
     @Override
     public User find(UUID id) {
-        return users.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
+        return users.stream().filter(t -> t.getId().equals(id)).findFirst().orElse(null);
     }
 
     @Override

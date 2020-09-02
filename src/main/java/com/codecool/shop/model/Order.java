@@ -47,6 +47,10 @@ public class Order {
         return id;
     }
 
+    public UUID getUserId() {
+        return userId;
+    }
+
     public void setActive(boolean active) {
         isActive = active;
     }

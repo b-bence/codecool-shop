@@ -4,11 +4,14 @@ import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.dao.OrderDao;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
+import com.codecool.shop.dao.UserDao;
 import com.codecool.shop.dao.implementation.OrderDaoMem;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.dao.implementation.UserDaoMem;
 import com.codecool.shop.model.LineItem;
 import com.codecool.shop.model.Order;
+import com.codecool.shop.model.User;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -34,12 +37,14 @@ public class CartController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        ProductDao productDataStore = ProductDaoMem.getInstance();
 //        ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
+        UserDao userDataStore = UserDaoMem.getInstance();
         OrderDao orderDataStore = OrderDaoMem.getInstance();
-        String orderIdStr = req.getParameter("orderid");
+        String userIdStr = req.getParameter("userid");
         Map<LineItem, Integer> lineItemList = new HashMap<>();
-        if (orderIdStr != "") {
-            UUID orderId = UUID.fromString(orderIdStr);
-            Order currentOrder = orderDataStore.find(orderId);
+        if (userIdStr != "") {
+            UUID userId = UUID.fromString(userIdStr);
+            User currentUser = userDataStore.find(userId);
+            Order currentOrder = currentUser.getLastOrder();
             lineItemList = currentOrder.getLineItems();
         }
 

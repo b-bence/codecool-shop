@@ -1,8 +1,10 @@
 package com.codecool.shop.servlets;
 
 
+import com.codecool.shop.dao.UserDao;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.dao.implementation.UserDaoMem;
 import com.codecool.shop.model.*;
 import com.codecool.shop.util.Util;
 import com.google.gson.Gson;
@@ -26,12 +28,14 @@ public class LineItemServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        UserDao userDataStore = UserDaoMem.getInstance();
         Order order;
         int productId = Integer.parseInt(request.getParameter("id"));
 
         if(user.isEmpty()){
             user = Optional.of(new User());
             user.get().createOrder();
+            userDataStore.add(user.get());
         }
 
         if(user.get().isThereAnActiveOrder()){
@@ -39,12 +43,13 @@ public class LineItemServlet extends HttpServlet {
         }else {
             order = new Order(); // If a guest wants to make another order.
         }
+        order.setUserId(user.get().getId());
 
         Product product = ProductDaoMem.getInstance().find(productId);
         LineItem lineItem = new LineItem(productId, product.getName(), product.getDefaultPrice(), product.getDefaultCurrency());
         order.addlineItem(lineItem);
 
-        String result = order.getId().toString();
+        String result = order.getUserId().toString();
 
         Gson gson = new GsonBuilder()
                 .serializeNulls()
