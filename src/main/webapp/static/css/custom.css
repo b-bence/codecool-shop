@@ -110,3 +110,13 @@ li {
     cursor: pointer;
 }
 
+td.center, th.center {
+    text-align: center;
+}
+
+td.total {
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    padding: 2.5em;
+}

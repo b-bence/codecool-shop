@@ -36,21 +36,21 @@ public class CartController extends HttpServlet {
 //        ProductDao productDataStore = ProductDaoMem.getInstance();
 //        ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         UserDao userDataStore = UserDaoMem.getInstance();
-        OrderDao orderDataStore = OrderDaoMem.getInstance();
         String userIdStr = req.getParameter("userid");
         Map<LineItem, Integer> lineItemList = new HashMap<>();
+        String totalPrice = "";
         if (userIdStr != null) {
             UUID userId = UUID.fromString(userIdStr);
             User currentUser = userDataStore.find(userId);
             Order currentOrder = currentUser.getLastOrder();
             lineItemList = currentOrder.getLineItems();
+            totalPrice = currentOrder.getTotalPriceWithCurrencyAsString();
         }
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("lineitems", lineItemList);
-//        context.setVariable("category", productCategoryDataStore.find(1));
-//        context.setVariable("products", productDataStore.getBy(productCategoryDataStore.find(1)));
+        context.setVariable("totalPrice", totalPrice);
 
         engine.process("product/cart.html", context, resp.getWriter());
     }
