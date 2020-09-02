@@ -80,6 +80,16 @@ li {
     background-color: darkslategrey;
 }
 
+
 .jumbotron {
     padding: 1rem 2rem;
 }
+
+#cart{
+    float:right;
+}
+
+#cart-icon{
+    padding: 10px;
+}
+
