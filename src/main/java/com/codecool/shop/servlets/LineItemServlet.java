@@ -5,6 +5,8 @@ import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.model.*;
 import com.codecool.shop.util.Util;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,10 +46,15 @@ public class LineItemServlet extends HttpServlet {
         LineItem lineItem = new LineItem(productId, product.getName(), product.getDefaultPrice(), product.getDefaultCurrency());
         order.addlineItem(lineItem);
 
-        String result = "{'status':'ok'}";
+        String result = "ok";
+
+        Gson gson = new GsonBuilder()
+                .serializeNulls()
+                .create();
+        String json = gson.toJson(result);
 
         PrintWriter out = response.getWriter();
-        out.println("ok:status");
+        out.println(json);
         out.flush();
     }
 

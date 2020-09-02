@@ -57,8 +57,8 @@ function addProductEventListener() {
 function addProductToCart(productId) {
     addLineItemToOrder(productId, (response) =>{
         console.log(productId);
-        let number = parseInt(document.querySelector("#cart").innerHTML) + 1;
-        document.querySelector("#cart").innerHTML = number.toString();
+        let number = parseInt(document.querySelector("#number-of-items").innerHTML) + 1;
+        document.querySelector("#number-of-items").innerHTML = number.toString();
     })
 }
 
