@@ -65,6 +65,11 @@ img {
     height: 250px;
 }
 
+.order-image{
+    height: 75px;
+    width: 75px;
+}
+
 ul {
     list-style-type: none;
     margin: 1em;
@@ -94,5 +99,14 @@ li {
 
 #cart-icon{
     padding: 10px;
+}
+
+#payment-button{
+    cursor: pointer;
+    float: right;
+}
+
+.fa-minus-square, .fa-plus-square, .fa-trash-o{
+    cursor: pointer;
 }
 

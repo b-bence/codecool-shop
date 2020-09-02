@@ -29,6 +29,8 @@
     <script src='/static/js/dataHandler.js' defer></script>
     <script src='/static/js/main.js' defer></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
 <div class="jumbotron text-center">
@@ -37,10 +39,25 @@
 </div>
 
 <div class="container">
-    <div class="lineItem" th:each="lineitem,iterStat : ${lineitems}">
-        <p th:text="${lineitem.getKey().getName()}">100 USD</p>
-    </div>
-
+    <table style="width:100%">
+        <tr>
+            <th>Product image</th>
+            <th>Product name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Change quantity</th>
+            <th>Delete all</th>
+        </tr>
+        <tr class="lineItem" th:each="lineitem,iterStat : ${lineitems}">
+            <td><img class="order-image" th:attr="src='/static/img/product_' + ${lineitem.getKey().getId()} + '.jpg'" alt=""></td>
+            <td th:text="${lineitem.getKey().getName()}"></td>
+            <td th:text="${lineitem.getValue()}"></td>
+            <td th:text="${lineitem.getKey().getDefaultPrice()*lineitem.getValue()}"></td>
+            <td><i class="fas fa-minus-square" style="font-size:24px"></i>  <i class="fas fa-plus-square" style="font-size:24px"></i></td>
+            <td><i class="fa fa-trash-o" style="font-size:24px"></i></td>
+        </tr>
+    </table>
+    <button id="payment-button">Proceed to payment</button>
 </div>
 
 </body>
