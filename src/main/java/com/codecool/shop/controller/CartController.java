@@ -48,12 +48,16 @@ public class CartController extends HttpServlet {
             totalPrice = currentOrder.getTotalPriceWithCurrencyAsString();
             isItemInCart = true;
         }
+        if (lineItemList.size() == 0) {
+            isItemInCart = false;
+        }
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("lineitems", lineItemList);
         context.setVariable("totalPrice", totalPrice);
         context.setVariable("isItemInCart", isItemInCart);
+        context.setVariable("orderId", userIdStr);
 
         engine.process("product/cart.html", context, resp.getWriter());
     }

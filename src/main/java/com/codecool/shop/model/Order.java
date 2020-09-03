@@ -25,10 +25,36 @@ public class Order {
         lineItems.put(lineItem, 1);
     }
 
+    public LineItem getLineItemById(int productId) {
+        LineItem lineItem = null;
+        for (LineItem item: lineItems.keySet()) {
+            if (item.getId() == productId) {
+                lineItem = item;
+            }
+        }
+        return lineItem;
+    }
+
     public void increaseLineItemNumber(String itemName){
         for (LineItem item: lineItems.keySet()){
             if (item.getName().equals(itemName)){
                 lineItems.put(item, lineItems.get(item) + 1);
+            }
+        }
+    }
+
+    public void increaseLineItemNumber(int productId){
+        for (LineItem item: lineItems.keySet()){
+            if (item.getId() == productId){
+                lineItems.put(item, lineItems.get(item) + 1);
+            }
+        }
+    }
+
+    public void decreaseLineItemNumber(int productId){
+        for (LineItem item: lineItems.keySet()){
+            if (item.getId() == productId){
+                lineItems.put(item, lineItems.get(item) - 1);
             }
         }
     }
@@ -96,5 +122,15 @@ public class Order {
         }
         String currency = lineitemCurrency == null ? "" : lineitemCurrency.toString();
         return getTotalPriceForCart() + " " + currency;
+    }
+
+    public int getLineItemQuantity(LineItem lineItem) {
+        int quantity = 0;
+        for (LineItem li: lineItems.keySet()) {
+            if (li.equals(lineItem)) {
+                quantity = lineItems.get(li);
+            }
+        }
+        return quantity;
     }
 }

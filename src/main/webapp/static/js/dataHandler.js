@@ -26,6 +26,13 @@ function apiPost(url, data, callback) {
 function addLineItemToOrder(productId, callback) {
     url = "/api/add-new-line-item?id=" + productId;
     this.apiGet(url, (response) => {
-        console.log(response)
         callback(response)
-    })}
+    })
+}
+
+function modifyQuantity(productId, userId, modification, callback) {
+    url = "/api/quantity?productid=" + productId + "&userid=" + userId + "&modification=" + modification;
+    this.apiGet(url, (response) => {
+        callback(response)
+    })
+}
