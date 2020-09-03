@@ -33,6 +33,9 @@ public class PaymentController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
+        context.setVariable("cost","Overall cost : 5000 $");
+
+
         engine.process("product/payment.html", context, resp.getWriter());
     }
 

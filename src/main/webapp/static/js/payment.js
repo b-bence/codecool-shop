@@ -29,14 +29,16 @@ function init() {
 function toggleCreditCardWindow() {
     let creditCard = document.querySelector("#credit-card");
     let creditCardWindow = `
-<div class="card-body " style="height: 350px">
-    <div class="form-group"> <label for="cc-number" class="control-label">CARD NUMBER</label> <input id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" required> </div>
+<div class="card-body credit-card-body" style="height: 350px">
+    <h2>Credit Card payment:</h2>
+    <br>
+    <div class="form-group"> <label for="cc-number" class="control-label">Card number</label> <input id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" required> </div>
 <div class="row">
     <div class="col-md-6">
-    <div class="form-group"> <label for="cc-exp" class="control-label">CARD EXPIRY</label> <input id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••" required> </div>
+    <div class="form-group"> <label for="cc-exp" class="control-label">Card Expiry</label> <input id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••" required> </div>
 </div>
 <div class="col-md-6">
-    <div class="form-group"> <label for="cc-cvc" class="control-label">CARD CVC</label> <input id="cc-cvc" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="••••" required> </div>
+    <div class="form-group"> <label for="cc-cvc" class="control-label">Card CVC</label> <input id="cc-cvc" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="••••" required> </div>
 </div>
 </div>
 <div class="form-group">
@@ -52,21 +54,21 @@ function toggleCreditCardWindow() {
     let cardWindow = document.querySelector(".col-sm-8");
 
     creditCard.addEventListener("click", e => {
-        if(cardWindow.childElementCount === 1){
+        if(cardWindow.childElementCount === 2){
             cardWindow.innerHTML += creditCardWindow;
             toggleCreditCardWindow();
             togglePayPalWindow();
             document.querySelector("#credit-card").checked = true;
         }else {
-            if (cardWindow.children[1].classList.contains("pay-pal-body")){
-                cardWindow.removeChild(cardWindow.children[1]);
+            if (cardWindow.children[2].classList.contains("pay-pal-body")){
+                cardWindow.removeChild(cardWindow.children[2]);
                 cardWindow.innerHTML += creditCardWindow;
                 toggleCreditCardWindow();
                 togglePayPalWindow();
                 document.querySelector("#credit-card").checked = true;
 
             }else {
-                cardWindow.removeChild(cardWindow.children[1]);
+                cardWindow.removeChild(cardWindow.children[2]);
                 document.querySelector("#credit-card").checked = false;
             }
         }
@@ -79,14 +81,16 @@ function toggleCreditCardWindow() {
 function togglePayPalWindow() {
     let payPal = document.querySelector("#pay-pal");
     let payPalWindow =
-        `<div class="pay-pal-body " style="height: 350px">
+        `<div class="pay-pal-body card-body" style="height: 350px">
+    <h2>PayPal payment:</h2>
+    <br>
     <div class="form-group">
     <label for="pp-number" class="control-label">Username</label>
     <input id="pp-number" type="text" class="input-lg form-control cc-number" placeholder="Username" required>
 </div>
 <div class="form-group">
     <label class="control-label">Password</label>
-    <input type="password" class="input-lg form-control">
+    <input type="password" class="input-lg form-control" placeholder="********">
     </div>
     <div class="form-group">
     <input value="MAKE PAYMENT" type="button" class="btn btn-success btn-lg form-control" style="font-size: .8rem;">
@@ -96,22 +100,22 @@ function togglePayPalWindow() {
     let cardWindow = document.querySelector(".col-sm-8");
 
     payPal.addEventListener("click", e => {
-        if(cardWindow.childElementCount === 1){
+        if(cardWindow.childElementCount === 2){
             cardWindow.innerHTML += payPalWindow;
             togglePayPalWindow();
             toggleCreditCardWindow();
             document.querySelector("#pay-pal").checked = true;
 
         }else {
-            if (cardWindow.children[1].classList.contains("card-body")){
-                cardWindow.removeChild(cardWindow.children[1]);
+            if (cardWindow.children[2].classList.contains("credit-card-body")){
+                cardWindow.removeChild(cardWindow.children[2]);
                 cardWindow.innerHTML += payPalWindow;
                 toggleCreditCardWindow();
                 togglePayPalWindow();
                 document.querySelector("#pay-pal").checked = true;
 
             }else {
-                cardWindow.removeChild(cardWindow.children[1]);
+                cardWindow.removeChild(cardWindow.children[2]);
                 document.querySelector("#pay-pal").checked = false;
             }
         }
