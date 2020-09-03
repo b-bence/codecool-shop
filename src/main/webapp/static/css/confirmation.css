@@ -1,0 +1,71 @@
+.order-card{
+    width: 600px;
+    align-content: center;
+
+}
+
+.details{
+    background: #e9ecef;
+    border: darkgrey 1px solid;
+}
+
+.item-header{
+    background: #e9ecef;
+    border: darkgrey 1px solid;
+}
+
+.confirm{
+    background: #4ca746;
+}
+
+
+.truck{
+    width: 200px;
+    height: 180px;
+}
+
+.title{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    }
+
+.order{
+text-align: -moz-center;
+
+}
+
+th{
+    text-align: center;
+}
+
+.items-title{
+    text-align: center;
+}
+
+.cost{
+    text-align: center;
+}
+
+.confirm {
+    position: relative;
+    display: inline-block;
+    outline: none;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    font-weight: 700;
+    background-color: #28a745;
+    border-color: #28a745;
+    border-radius: .3rem;
+    line-height: 1.5;
+    padding: .5rem 1rem;
+}
+
+.button{
+    text-align: center;
+}
