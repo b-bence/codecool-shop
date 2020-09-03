@@ -128,3 +128,22 @@ td.total {
     font-weight: bold;
     text-align: center;
 }
+
+
+#checkout-button {
+    position: relative;
+    display: inline-block;
+    outline: none;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    font-weight: 700;
+    background-color: #28a745;
+    border-color: #28a745;
+    border-radius: .3rem;
+    line-height: 1.5;
+    padding: .5rem 1rem;
+}

@@ -41,12 +41,18 @@ public class CheckoutController extends HttpServlet {
         String zipShipping = req.getParameter("zip-shipping");
         String addressShipping = req.getParameter("address-shipping");
 
+
         if (countryShipping.equals("")){
             countryShipping = countryBilling;
             cityShipping = cityBilling;
             zipShipping = zipBilling;
             addressShipping = addressBilling;
         }
+
+        currentUser.setShippingAddress(countryShipping + " " + cityShipping + " " + zipShipping + " " + addressShipping);
+
+
+
         currentOrder.addOrderDetail("fullName",fullName);
         currentOrder.addOrderDetail("email",email);
         currentOrder.addOrderDetail("phone",phone);
