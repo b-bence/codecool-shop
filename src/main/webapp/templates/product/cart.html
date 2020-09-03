@@ -69,14 +69,17 @@
             </tr>
         </table>
         <div>
-        <button id="payment-button">Proceed to payment</button>
+            <a id="checkout-button" th:href="${checkoutUrl}"> Proceed to checkout</a>
+            <br><br>
         </div>
+
     </div>
     <div id="no-cart-content" th:if="${isItemInCart==false}">
         <i id="cart-icon"class="fas fa-shopping-cart"></i>
         <p>There are no products in your cart yet.</p>
     </div>
 </div>
-<!--<div th:replace="footer.html :: copy"></div>-->
+
+<div th:replace="footer.html :: copy"></div>
 </body>
 </html>

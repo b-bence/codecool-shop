@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Codecool" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Confirmation</title>
+
+    <!-- Bootstrap components -->
+    <!-- Latest compiled and minified Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/4818a6b19c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--Latest compiled and minified Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- End of Bootstrap components -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/confirmation.css" />
+    <script src='/static/js/dataHandler.js' defer></script>
+    <script src='/static/js/main.js' defer></script>
+<body>
+
+<div class="jumbotron text-center">
+    <h1>Bizarre Bazaar</h1>
+    <h2>Confirmation</h2>
+</div>
+<div class="order">
+    <div class="order-card">
+        <div class="title">
+            <h3 class="title-text">Your order is on its way</h3>
+            <img src="/static/img/truck.gif" alt="" class="truck">
+        </div>
+        <div class="details">
+            <div><h5>Summary: </h5></div>
+            <div class="order-id">
+                <span class="detail" >Order Id: </span>
+                <span class="detail" th:text="${orderId}">23424354zbe6u</span>
+            </div>
+            <div class="address">
+                <span class="detail" >Address:  </span>
+                <span class="detail" th:text="${address}">1145 Budapest Kiss utca 23</span>
+            </div>
+        </div>
+        <div class="items-title"><h4>Ordered Items:</h4> </div>
+        <div class="items">
+            <table class="item-table" style="width:100%">
+                <tr>
+                    <th class="item-header">Product image</th>
+                    <th class="item-header">Product name</th>
+                    <th class="item-header">Quantity</th>
+                    <th class="item-header">Price</th>
+                </tr>
+                <tr class="lineItem" th:each="lineitem,iterStat : ${lineitems}">
+                    <td class="center"><img class="order-image" th:attr="src='/static/img/product_' + ${lineitem.getKey().getId()} + '.jpg'" alt=""></td>
+                    <td class="center" th:text="${lineitem.getKey().getName()}"></td>
+                    <td class="center" th:text="${lineitem.getValue()}"></td>
+                    <td class="center"><span th:text="${#numbers.formatDecimal(lineitem.getKey().getDefaultPrice()*lineitem.getValue(), 0, 'COMMA', 2, 'POINT')}"></span> <span th:text="${lineitem.getKey().getDefaultCurrency()}"></span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="cost">
+            <h3 class="total-cost" th:text="${cost}">Total cost: 300 $</h3>
+        </div>
+        <div class="button">
+            <a href="/"><button class="confirm">OK</button></a>
+        </div>
+    </div>
+</div>
+
+<div class="footer" th:replace="footer.html :: copy"></div>
+</body>
+</html>

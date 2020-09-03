@@ -14,7 +14,7 @@ public class User {
     private String eMail;
     private int phoneNumber;
     private HashMap<String, String> billingAddress = new HashMap<>();
-    private HashMap<String, String> shippingAddress = new HashMap<>();
+    private String shippingAddress;
     private List<Order> orders = new ArrayList<>();
 
 
@@ -34,7 +34,7 @@ public class User {
         this.billingAddress = billingAddress;
     }
 
-    public void setShippingAddress(HashMap<String, String> shippingAddress) {
+    public void setShippingAddress(String shippingAddress) {
         this.shippingAddress = shippingAddress;
     }
 
@@ -55,7 +55,7 @@ public class User {
         return billingAddress;
     }
 
-    public HashMap<String, String> getShippingAddress() {
+    public String getShippingAddress() {
         return shippingAddress;
     }
 

@@ -1,5 +1,6 @@
 package com.codecool.shop.util;
 
+import com.codecool.shop.model.Order;
 import com.codecool.shop.model.Product;
 import com.google.gson.*;
 
@@ -13,6 +14,16 @@ public class Util {
                 .create();
 
         String json = gson.toJson(productList);
+        return json;
+    }
+
+
+    public static String parseOrderToJSON(Order order) {
+        Gson gson = new GsonBuilder()
+                .serializeNulls()
+                .create();
+
+        String json = gson.toJson(order);
         return json;
     }
 }
