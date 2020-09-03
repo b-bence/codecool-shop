@@ -1,0 +1,21 @@
+.padding {
+    padding: 5rem !important
+}
+
+.form-control:focus {
+    box-shadow: 10px 0px 0px 0px #ffffff !important;
+    border-color: #4ca746
+}
+
+img{
+    width: 45px;
+    height: 45px;
+}
+
+.pay-pal-img{
+    height: 30px; !important;
+}
+
+.unvisible{
+    visibility: hidden;
+}
