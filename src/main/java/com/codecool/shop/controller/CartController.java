@@ -22,13 +22,6 @@ import java.util.UUID;
 @WebServlet(urlPatterns = {"/cart"})
 public class CartController extends HttpServlet {
 
-//    private Optional<Order> order = Optional.empty();
-
-//    @Override
-//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        super.doPost(req, resp);
-//    }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        ProductDao productDataStore = ProductDaoMem.getInstance();
@@ -46,6 +39,10 @@ public class CartController extends HttpServlet {
             totalPrice = currentOrder.getTotalPriceWithCurrencyAsString();
             isItemInCart = true;
         }
+        if (lineItemList.size() == 0) {
+            isItemInCart = false;
+        }
+
         String checkoutUrl = "/checkout?userid=" + userIdStr;
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
@@ -53,6 +50,7 @@ public class CartController extends HttpServlet {
         context.setVariable("totalPrice", totalPrice);
         context.setVariable("isItemInCart", isItemInCart);
         context.setVariable("checkoutUrl", checkoutUrl);
+        context.setVariable("orderId", userIdStr);
 
         engine.process("product/cart.html", context, resp.getWriter());
     }

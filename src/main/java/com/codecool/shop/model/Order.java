@@ -28,6 +28,26 @@ public class Order {
         lineItems.put(lineItem, 1);
     }
 
+    public boolean hasLineItem(LineItem lineItem) {
+        boolean hasLineItem = false;
+        for (LineItem li: lineItems.keySet()) {
+            if (lineItem.equals(li)) {
+                hasLineItem = true;
+            }
+        }
+        return hasLineItem;
+    }
+
+    public LineItem getLineItemById(int productId) {
+        LineItem lineItem = null;
+        for (LineItem item: lineItems.keySet()) {
+            if (item.getId() == productId) {
+                lineItem = item;
+            }
+        }
+        return lineItem;
+    }
+
     public void addOrderDetail(String field, String detail){
         orderDetails.put(field, detail);
     }
@@ -40,6 +60,22 @@ public class Order {
         }
     }
 
+    public void increaseLineItemNumber(int productId){
+        for (LineItem item: lineItems.keySet()){
+            if (item.getId() == productId){
+                lineItems.put(item, lineItems.get(item) + 1);
+            }
+        }
+    }
+
+    public void decreaseLineItemNumber(int productId){
+        for (LineItem item: lineItems.keySet()){
+            if (item.getId() == productId){
+                lineItems.put(item, lineItems.get(item) - 1);
+            }
+        }
+    }
+
     public boolean checkIfLineItemExists(String itemName){
         for (LineItem item: lineItems.keySet()){
             if (item.getName().equals(itemName)){
@@ -47,16 +83,6 @@ public class Order {
             }
         }
         return false;
-    }
-
-
-    public void deleteOnelineItem(LineItem lineItem) {
-        if (lineItems.containsKey(lineItem)) {
-            lineItems.put(lineItem, lineItems.get(lineItem) - 1);
-            if (lineItems.get(lineItem) <= 0) {
-                lineItems.remove(lineItem);
-            }
-        }
     }
 
     public void deleteOneTypeOflineItem(LineItem lineItem) {
@@ -103,5 +129,23 @@ public class Order {
         }
         String currency = lineitemCurrency == null ? "" : lineitemCurrency.toString();
         return getTotalPriceForCart() + " " + currency;
+    }
+
+    public int getLineItemQuantity(LineItem lineItem) {
+        int quantity = 0;
+        for (LineItem li: lineItems.keySet()) {
+            if (li.equals(lineItem)) {
+                quantity = lineItems.get(li);
+            }
+        }
+        return quantity;
+    }
+
+    public int getAllLineItemCount() {
+        int count = 0;
+        for (Integer quantity: lineItems.values()) {
+            count += quantity;
+        }
+        return count;
     }
 }

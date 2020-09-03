@@ -48,7 +48,7 @@ public class ConfirmationController extends HttpServlet {
         orderDataStore.add(order);
         order.setActive(false);
 
-        context.setVariable("cost", "Total cos: " + overallCost);
+        context.setVariable("cost", "Total cost: " + overallCost);
         context.setVariable("orderId", order.getId());
         context.setVariable("address", user.getShippingAddress());
         context.setVariable("lineitems", order.getLineItems());
