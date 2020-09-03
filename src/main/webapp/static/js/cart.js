@@ -14,6 +14,11 @@ function addEventToMinusQuantityButton() {
         minusButton.addEventListener("click", () => {
             let productId = minusButton.parentElement.dataset.productId;
             let userId = document.querySelector("table").dataset.userId;
+            let quantity = parseInt(minusButton.parentElement.parentElement.children[2].innerText);
+            if (quantity == 1) {
+                let confirmation = confirm("Are you sure you want to delete this item from the cart?");
+                if (confirmation == false) return;
+            }
             modifyQuantity(productId, userId, "decrease", (response) => {
                 let quantity = response.quantity;
                 if (quantity == 0) {
@@ -45,6 +50,10 @@ function addEventToDustbins() {
     let dustbins = document.querySelectorAll(".dustbin");
     for (let dustbin of dustbins) {
         let productId = dustbin.parentElement.dataset.productId;
-        dustbin.addEventListener("click", () => modifyQuantity(productId, userId, "deleteall", () => location.reload()));
+        dustbin.addEventListener("click", () => {
+            let confirmation = confirm("Are you sure you want to delete this item from the cart?");
+            if (confirmation == false) return;
+            modifyQuantity(productId, userId, "deleteall", () => location.reload())
+        });
     }
 }
