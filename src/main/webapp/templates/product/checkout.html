@@ -1,10 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Bootstrap components -->
+<!-- Latest compiled and minified Jquery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script src="https://kit.fontawesome.com/4818a6b19c.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--Latest compiled and minified Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<!-- End of Bootstrap components -->
+
+<link rel="stylesheet" type="text/css" href="/static/css/checkout.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src='/static/js/checkout.js' defer></script>
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<div class="row">
+    <div class="col-75">
+        <div class="container">
+            <form action="/action_page.php">
+
+                <div class="row">
+                    <div class="col-50">
+                        <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                        <input type="text" id="fname" name="firstname" placeholder="Code Cooler">
+
+                        <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                        <input type="text" id="email" name="email" placeholder="codecoolshop@codecool.com">
+
+                        <label for="phone"><i class="fa fa-phone-alt"></i> Phone number</label>
+                        <input type="number" id="phone" name="phone" placeholder="06 70 944 3402">
+
+                        <h3>Billing Address</h3>
+                        <label for="country"><i class="fas fa-globe-americas"></i> Country</label>
+                        <input type="text" id="country" name="country" placeholder="Hungary">
+
+                        <label for="city"><i class="fa fa-institution"></i> City</label>
+                        <input type="text" id="city" name="city" placeholder="Budapest">
+
+                        <label for="zip"><i class="fa fa-address-card-o"></i> Zip</label>
+                        <input type="text" id="zip" name="zip" placeholder="1065">
+
+                        <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                        <input type="text" id="adr" name="address" placeholder="Nagymezo utca 44">
+
+                        <h3>Shipping Address</h3>
+                        <label>
+                            <input type="checkbox" checked="checked" name="sameadr" id="checkbox"> Shipping address same as billing
+                        </label>
+                        <div id="shipping">
+                        <label for="country-ship"><i class="fas fa-globe-americas"></i> Country</label>
+                        <input type="text" id="country-ship" name="country" placeholder="Hungary">
+
+                        <label for="city-ship"><i class="fa fa-institution"></i> City</label>
+                        <input type="text" id="city-ship" name="city" placeholder="Budapest">
+
+                        <label for="zip-ship"><i class="fa fa-address-card-o"></i> Zip</label>
+                        <input type="text" id="zip-ship" name="zip" placeholder="1065">
+
+                        <label for="adr-ship"><i class="fa fa-address-card-o"></i> Address</label>
+                        <input type="text" id="adr-ship" name="address" placeholder="Nagymezo utca 44">
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Continue to payment" class="btn">
+            </form>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
