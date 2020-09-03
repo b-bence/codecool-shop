@@ -20,13 +20,14 @@ function addEventToMinusQuantityButton() {
                 if (confirmation == false) return;
             }
             modifyQuantity(productId, userId, "decrease", (response) => {
-                let quantity = response.quantity;
-                if (quantity == 0) {
-                    location.reload();
-                } else {
-                    let quantityTd = minusButton.parentElement.parentElement.children[2];
-                    quantityTd.innerText = quantity;
-                }
+                // let quantity = response.quantity;
+                // if (quantity == 0) {
+                //     location.reload();
+                // } else {
+                //     let quantityTd = minusButton.parentElement.parentElement.children[2];
+                //     quantityTd.innerText = quantity;
+                // }
+                location.reload();
             })
         })
     }
@@ -38,9 +39,10 @@ function addEventToPlusQuantityButton() {
         plusButton.addEventListener("click", () => {
             let productId = plusButton.parentElement.dataset.productId;
             modifyQuantity(productId, userId, "increase", (response) => {
-                let quantity = response.quantity;
-                let quantityTd = plusButton.parentElement.parentElement.children[2];
-                quantityTd.innerText = quantity;
+                // let quantity = response.quantity;
+                // let quantityTd = plusButton.parentElement.parentElement.children[2];
+                // quantityTd.innerText = quantity;
+                location.reload();
             })
         })
     }
