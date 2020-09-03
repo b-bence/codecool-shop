@@ -88,5 +88,6 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("Handitaur", 21.2f, "USD", "Get rid of your boring puppets, the Handitaur has arrived.", productCategoryDataStore.find("Children"), supplierDataStore.find("Wish")));
         productDataStore.add(new Product("Batman water pistol", 9.7f, "USD", "The Dark Knight returns, and spitting water.", productCategoryDataStore.find("Children"), supplierDataStore.find("Ali Express")));
         productDataStore.add(new Product("Pepe the frog - mouse pad", 12.3f, "USD", "The health of your wrists are very important, there's no butt about it.", productCategoryDataStore.find("IT Accessories"), supplierDataStore.find("Ali Express")));
+        productDataStore.add(new Product("Rainbow smash unicorn", 22.3f, "USD", "Instructions unknown.", productCategoryDataStore.find("Children"), supplierDataStore.find("Ali Express")));
     }
 }

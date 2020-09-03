@@ -1,5 +1,6 @@
 package com.codecool.shop.model;
 
+import java.util.Currency;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -21,7 +22,6 @@ public class Order {
     }
 
     public void addlineItem(LineItem lineItem) {
-        //lineItems.put(lineItem, lineItems.get(lineItem) + 1);
         lineItems.put(lineItem, 1);
     }
 
@@ -42,15 +42,6 @@ public class Order {
         return false;
     }
 
-//    public boolean checkIfItemExists(LineItem lineItem){
-//        String itemName = lineItem.getName();
-//        for (LineItem item: lineItems.keySet()){
-//            if (item.getName().equals(itemName)){
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
 
     public void deleteOnelineItem(LineItem lineItem) {
         if (lineItems.containsKey(lineItem)) {
@@ -85,5 +76,25 @@ public class Order {
 
     public Map<LineItem, Integer> getLineItems() {
         return lineItems;
+    }
+
+    public float getTotalPriceForCart() {
+        float total = 0;
+        for (var entry: lineItems.entrySet()) {
+            float price = entry.getKey().getDefaultPrice();
+            int pieceOfProduct = entry.getValue();
+            total += price * pieceOfProduct;
+        }
+        return total;
+    }
+
+    public String getTotalPriceWithCurrencyAsString() {
+        Currency lineitemCurrency = null;
+        for (LineItem lineItem: lineItems.keySet()) {
+            lineitemCurrency = lineItem.getDefaultCurrency();
+            break;
+        }
+        String currency = lineitemCurrency == null ? "" : lineitemCurrency.toString();
+        return getTotalPriceForCart() + " " + currency;
     }
 }
