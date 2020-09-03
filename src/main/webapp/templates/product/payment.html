@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Codecool" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Payment</title>
+
+    <!-- Bootstrap components -->
+    <!-- Latest compiled and minified Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/4818a6b19c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--Latest compiled and minified Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- End of Bootstrap components -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/static/css/payment.css" />
+
+    <script src='/static/js/dataHandler.js' defer></script>
+    <script src='/static/js/main.js' defer></script>
+    <script src='/static/js/payment.js' defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/3.0.0/jquery.payment.min.js" defer></script>
+
+</head>
+<body>
+
+<div class="jumbotron text-center">
+    <h1>Bizarre Bazaar</h1>
+    <h2>Payment</h2>
+</div>
+
+
+<div class="padding">
+    <div class="row">
+
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="col-sm-8 col-md-6">
+                <div class="col-md-6">
+                    <h3 th:text="${cost}"></h3>
+                    <br>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6"> <span>Please choose paying method: </span>
+                            </div>
+                                <div class="col-md-6 text-right" style="margin-top: -5px;">
+                                    <div class="card-types">
+                                        <input class="choose-payment" type="checkbox" id="credit-card" name="credit-card" value="credit-card">
+                                        <img src="https://img.icons8.com/color/36/000000/visa.png">
+                                        <img src="https://img.icons8.com/color/36/000000/mastercard.png">
+                                        <img src="https://img.icons8.com/color/36/000000/amex.png">
+
+                                        <input class="choose-payment" type="checkbox" id="pay-pal" name="pay-pal" value="pay-pal">
+                                        <img class="pay-pal-img" src="https://www.paypalobjects.com/digitalassets/c/website/marketing/na/us/logo-center/Badge_2.png">
+
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="bottom-padding">
+                <div class="col-md-12">
+                    <div class="wow fadeInUp animated" data-wow-duration="2s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 2s; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <h2>Download our app </h2>
+                        <p> Download our android and IOS application to have awesome experience. </p>
+                    </div>
+                    <div class="buttons"> <a href="" class="btn btn-success btn-lg" data-wow-duration="2s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 2s; animation-delay: 0.2s; animation-name: fadeInLeft;"><i class="fa fa-android fa-2x"></i> Download<br> <small>Android version 1.4</small></a> <a href="#" class="btn btn-info btn-lg wow fadeInRight animated" data-wow-duration="3s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 3s; animation-delay: 0.3s; animation-name: fadeInRight;"><i class="fa fa-apple fa-2x"></i> Download <br> <small>iOs version 1.4</small></a> </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="footer" th:replace="footer.html :: copy"></div>
+
+</body>
+</html>
