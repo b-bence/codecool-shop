@@ -46,12 +46,13 @@
         <div class="details">
             <div><h5>Summary: </h5></div>
             <div class="order-id">
-                <span class="detail">Order Id: </span>
-                <span class="detail">23424354zbe6u</span>
+                <span class="detail" >Order Id: </span>
+                <span class="detail" th:text="${orderId}">23424354zbe6u</span>
             </div>
             <div class="address">
-                <span class="detail">Address:  </span>
-                <span class="detail">1145 Budapest Kiss utca 23</span>
+                <span class="detail" >Address:  </span>
+                <span class="detail" th:text="${address}">1145 Budapest Kiss utca 23</span>
+                <span class="detail" th:text="${address}">1145 Budapest Kiss utca 23</span>
             </div>
         </div>
         <div class="items-title"><h4>Ordered Items:</h4> </div>
@@ -63,13 +64,19 @@
                     <th class="item-header">Quantity</th>
                     <th class="item-header">Price</th>
                 </tr>
+                <tr class="lineItem" th:each="lineitem,iterStat : ${lineitems}">
+                    <td class="center"><img class="order-image" th:attr="src='/static/img/product_' + ${lineitem.getKey().getId()} + '.jpg'" alt=""></td>
+                    <td class="center" th:text="${lineitem.getKey().getName()}"></td>
+                    <td class="center" th:text="${lineitem.getValue()}"></td>
+                    <td class="center"><span th:text="${#numbers.formatDecimal(lineitem.getKey().getDefaultPrice()*lineitem.getValue(), 0, 'COMMA', 2, 'POINT')}"></span> <span th:text="${lineitem.getKey().getDefaultCurrency()}"></span></td>
+                </tr>
             </table>
         </div>
         <div class="cost">
-            <h3 class="total-cost">Total cost: 300 $</h3>
+            <h3 class="total-cost" th:text="${cost}">Total cost: 300 $</h3>
         </div>
         <div class="button">
-            <button class="confirm">Confirm</button>
+            <a href="/"><button class="confirm">OK</button></a>
         </div>
     </div>
 </div>

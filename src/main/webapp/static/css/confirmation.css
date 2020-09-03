@@ -69,3 +69,12 @@ th{
 .button{
     text-align: center;
 }
+
+img{
+    width: 90px;
+    height: 80px;
+}
+
+.center{
+    text-align: center;
+}

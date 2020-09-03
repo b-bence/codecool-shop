@@ -46,7 +46,7 @@ function toggleCreditCardWindow() {
 <input type="text" class="input-lg form-control">
     </div>
     <div class="form-group">
-    <input value="Pay" type="button" class="btn btn-success btn-lg form-control" style="font-size: .8rem;">
+    <a href="/confirmation"><input value="Pay" type="button" class="btn btn-success btn-lg form-control" style="font-size: .8rem;"></a>
     </div>
     </div>
 `
@@ -94,7 +94,7 @@ function togglePayPalWindow() {
     <input type="password" class="input-lg form-control" placeholder="********">
     </div>
     <div class="form-group">
-    <input value="Pay" type="button" class="btn btn-success btn-lg form-control" style="font-size: .8rem;">
+    <a href="/confirmation"><input value="Pay" type="button" class="btn btn-success btn-lg form-control" style="font-size: .8rem;"></a>
     </div>
     </div>`
 
