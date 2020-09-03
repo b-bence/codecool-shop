@@ -12,9 +12,12 @@ public class Order {
     private Map<LineItem, Integer> lineItems;
     private boolean isActive = true;
 
+    private Map<String, String> orderDetails;
+
     public Order() {
         this.id = UUID.randomUUID();;
         this.lineItems = new HashMap<>();
+        this.orderDetails = new HashMap<>();
     }
 
     public void setUserId(UUID userId) {
@@ -23,6 +26,10 @@ public class Order {
 
     public void addlineItem(LineItem lineItem) {
         lineItems.put(lineItem, 1);
+    }
+
+    public void addOrderDetail(String field, String detail){
+        orderDetails.put(field, detail);
     }
 
     public void increaseLineItemNumber(String itemName){
