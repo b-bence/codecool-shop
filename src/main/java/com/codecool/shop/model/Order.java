@@ -28,6 +28,16 @@ public class Order {
         lineItems.put(lineItem, 1);
     }
 
+    public boolean hasLineItem(LineItem lineItem) {
+        boolean hasLineItem = false;
+        for (LineItem li: lineItems.keySet()) {
+            if (lineItem.equals(li)) {
+                hasLineItem = true;
+            }
+        }
+        return hasLineItem;
+    }
+
     public LineItem getLineItemById(int productId) {
         LineItem lineItem = null;
         for (LineItem item: lineItems.keySet()) {
@@ -73,16 +83,6 @@ public class Order {
             }
         }
         return false;
-    }
-
-
-    public void deleteOnelineItem(LineItem lineItem) {
-        if (lineItems.containsKey(lineItem)) {
-            lineItems.put(lineItem, lineItems.get(lineItem) - 1);
-            if (lineItems.get(lineItem) <= 0) {
-                lineItems.remove(lineItem);
-            }
-        }
     }
 
     public void deleteOneTypeOflineItem(LineItem lineItem) {
@@ -139,5 +139,13 @@ public class Order {
             }
         }
         return quantity;
+    }
+
+    public int getAllLineItemCount() {
+        int count = 0;
+        for (Integer quantity: lineItems.values()) {
+            count += quantity;
+        }
+        return count;
     }
 }

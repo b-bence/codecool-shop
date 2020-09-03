@@ -58,15 +58,19 @@ function addProductToCart(productId) {
     addLineItemToOrder(productId, (response) =>{
         let cartP = document.querySelector("#cart");
         if (cartP.dataset.hasOrder == "false") {
-            cartP.dataset.userId = response;
+            cartP.dataset.userId = response.userId;
             cartP.dataset.hasOrder = "true";
         }
         let cartLink = document.querySelector("#cart-link");
-        cartLink.setAttribute("href", `/cart?userid=${response}`);
-        let number = parseInt(document.querySelector("#number-of-items").innerHTML) + 1;
+        cartLink.setAttribute("href", `/cart?userid=${response.userId}`);
+        let number = parseInt(response.quantity);
         document.querySelector("#number-of-items").innerHTML = number.toString();
     })
 }
+//
+// function refreshCartCount() {
+//
+// }
 
 
 

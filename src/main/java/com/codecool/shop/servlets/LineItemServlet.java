@@ -10,6 +10,7 @@ import com.codecool.shop.model.Product;
 import com.codecool.shop.model.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,15 +57,12 @@ public class LineItemServlet extends HttpServlet {
             order.addlineItem(lineItem);
         }
 
-        String result = order.getUserId().toString();
-
-        Gson gson = new GsonBuilder()
-                .serializeNulls()
-                .create();
-        String json = gson.toJson(result);
+        int quantity = order.getAllLineItemCount();
+        String json = String.format("{ \"userId\": \"%s\", \"quantity\": \"%d\" }", order.getUserId().toString(), quantity);
+        JsonObject convertedObject = new Gson().fromJson(json, JsonObject.class);
 
         PrintWriter out = response.getWriter();
-        out.println(json);
+        out.println(convertedObject);
         out.flush();
     }
 

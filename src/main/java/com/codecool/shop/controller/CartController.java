@@ -22,13 +22,6 @@ import java.util.UUID;
 @WebServlet(urlPatterns = {"/cart"})
 public class CartController extends HttpServlet {
 
-//    private Optional<Order> order = Optional.empty();
-
-//    @Override
-//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        super.doPost(req, resp);
-//    }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        ProductDao productDataStore = ProductDaoMem.getInstance();

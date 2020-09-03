@@ -43,18 +43,24 @@ public class QuantityServlet extends HttpServlet {
         User currentUser = userDataStore.find(UUID.fromString(userId));
         Order currentOrder = currentUser.getLastOrder();
         LineItem currentLineItem = currentOrder.getLineItemById(Integer.parseInt(productId));
-        int quantity = currentOrder.getLineItemQuantity(currentLineItem);
+
         if (modification.equals(Modification.decrease.toString())) {
 //            Map<LineItem, Integer> lineItems = currentOrder.getLineItems();
             currentOrder.decreaseLineItemNumber(Integer.parseInt(productId));
         } else if (modification.equals(Modification.increase.toString())) {
             currentOrder.increaseLineItemNumber(Integer.parseInt(productId));
+        } else if (modification.equals(Modification.deleteall.toString())) {
+            currentOrder.deleteOneTypeOflineItem(currentLineItem);
         }
-        if (quantity == 1) {
+
+        int quantity = 0;
+        if (currentOrder.hasLineItem(currentLineItem)) {
+            quantity = currentOrder.getLineItemQuantity(currentLineItem);
+        }
+
+        if (quantity == 0 && !modification.equals(Modification.deleteall.toString())) {
             currentOrder.deleteOneTypeOflineItem(currentLineItem);
             quantity = 0;
-        } else {
-            quantity = currentOrder.getLineItemQuantity(currentLineItem);
         }
 
         String json = String.format("{ \"productId\": \"%s\", \"orderId\": \"%s\", \"quantity\": \"%d\" }", productId, userId, quantity);

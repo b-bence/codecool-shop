@@ -1,8 +1,11 @@
 init();
 
+let userId = document.querySelector("table").dataset.userId;
+
 function init() {
     addEventToMinusQuantityButton();
     addEventToPlusQuantityButton();
+    addEventToDustbins();
 }
 
 function addEventToMinusQuantityButton() {
@@ -29,12 +32,19 @@ function addEventToPlusQuantityButton() {
     for (let plusButton of plusQuantityButtons) {
         plusButton.addEventListener("click", () => {
             let productId = plusButton.parentElement.dataset.productId;
-            let userId = document.querySelector("table").dataset.userId;
             modifyQuantity(productId, userId, "increase", (response) => {
                 let quantity = response.quantity;
                 let quantityTd = plusButton.parentElement.parentElement.children[2];
                 quantityTd.innerText = quantity;
             })
         })
+    }
+}
+
+function addEventToDustbins() {
+    let dustbins = document.querySelectorAll(".dustbin");
+    for (let dustbin of dustbins) {
+        let productId = dustbin.parentElement.dataset.productId;
+        dustbin.addEventListener("click", () => modifyQuantity(productId, userId, "deleteall", () => location.reload()));
     }
 }
