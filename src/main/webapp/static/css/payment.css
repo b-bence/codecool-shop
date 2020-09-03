@@ -16,6 +16,45 @@ img{
     height: 30px; !important;
 }
 
-.unvisible{
-    visibility: hidden;
+
+
+.bottom-padding {
+
+    padding: 5rem !important;
+    margin-left: 50px;
+    background-color: inherit;
+
+}
+
+.intro .buttons a.btn {
+    margin: 30px;
+    padding: 10px 30px
+}
+
+.btn {
+    position: relative;
+    display: inline-block;
+    outline: none;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    font-weight: 700
+}
+
+.animated h2 {
+    text-align: center;
+    color: black;
+}
+
+.animated p {
+    text-align: center;
+    color: black;
+}
+
+.buttons {
+    text-align: center
 }

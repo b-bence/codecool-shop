@@ -46,7 +46,7 @@ function toggleCreditCardWindow() {
 <input type="text" class="input-lg form-control">
     </div>
     <div class="form-group">
-    <input value="MAKE PAYMENT" type="button" class="btn btn-success btn-lg form-control" style="font-size: .8rem;">
+    <input value="Pay" type="button" class="btn btn-success btn-lg form-control" style="font-size: .8rem;">
     </div>
     </div>
 `
@@ -83,6 +83,7 @@ function togglePayPalWindow() {
     let payPalWindow =
         `<div class="pay-pal-body card-body" style="height: 350px">
     <h2>PayPal payment:</h2>
+    <h5>Please Log In or <a href="https://www.paypal.com/us/webapps/mpp/account-selection">Sign up</a></h5>
     <br>
     <div class="form-group">
     <label for="pp-number" class="control-label">Username</label>
@@ -93,7 +94,7 @@ function togglePayPalWindow() {
     <input type="password" class="input-lg form-control" placeholder="********">
     </div>
     <div class="form-group">
-    <input value="MAKE PAYMENT" type="button" class="btn btn-success btn-lg form-control" style="font-size: .8rem;">
+    <input value="Pay" type="button" class="btn btn-success btn-lg form-control" style="font-size: .8rem;">
     </div>
     </div>`
 
