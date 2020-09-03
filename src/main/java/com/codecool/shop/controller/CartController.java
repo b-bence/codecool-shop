@@ -1,9 +1,7 @@
 package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
-import com.codecool.shop.dao.OrderDao;
 import com.codecool.shop.dao.UserDao;
-import com.codecool.shop.dao.implementation.OrderDaoMem;
 import com.codecool.shop.dao.implementation.UserDaoMem;
 import com.codecool.shop.model.LineItem;
 import com.codecool.shop.model.Order;
@@ -48,12 +46,13 @@ public class CartController extends HttpServlet {
             totalPrice = currentOrder.getTotalPriceWithCurrencyAsString();
             isItemInCart = true;
         }
-
+        String checkoutUrl = "/checkout?userid=" + userIdStr;
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("lineitems", lineItemList);
         context.setVariable("totalPrice", totalPrice);
         context.setVariable("isItemInCart", isItemInCart);
+        context.setVariable("checkoutUrl", checkoutUrl);
 
         engine.process("product/cart.html", context, resp.getWriter());
     }

@@ -68,7 +68,8 @@
             </tr>
         </table>
         <div>
-            <a href="/payment"><button id="payment-button">Proceed to payment</button></a>
+
+        <button id="checkout-button"><a th:href="${checkoutUrl}"> Proceed to checkout</a></button>
         </div>
     </div>
     <div id="no-cart-content" th:if="${isItemInCart==false}">
