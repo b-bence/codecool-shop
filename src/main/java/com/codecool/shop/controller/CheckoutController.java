@@ -61,6 +61,9 @@ public class CheckoutController extends HttpServlet {
         currentOrder.addOrderDetail("zipShipping",zipShipping);
         currentOrder.addOrderDetail("addressShipping",addressShipping);
 
+        String paymentUrl = "/payment?userid=" + userIdStr;
+        resp.sendRedirect(paymentUrl);
+
     }
 
     @Override
